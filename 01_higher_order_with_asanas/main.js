@@ -9,6 +9,7 @@ const asanas= [
 ];
 
 let longestAsanaField = document.querySelector('.longestAsanaField');
+let shortestAsanaField = document.querySelector('.shortestAsanaField');
 let invertedAsanaField = document.querySelector('.invertedAsanaField');
 
 const longestAsana = asanas.sort(function (d1, d2) {
@@ -19,7 +20,22 @@ const longestAsana = asanas.sort(function (d1, d2) {
     };
 });
 
-longestAsanaField.innerHTML = longestAsana[0].name;
+function showLongest() {
+    longestAsanaField.innerHTML = longestAsana[0].name;
+}
+
+// NO FUNCIONA - ROMPE EL LONGEST
+const shortestAsana = asanas.sort(function (d1, d2) {
+    if(d1.duration > d2.duration) {
+        return 1
+    } else {
+        return -1
+    };
+});
+
+function showShortest() {
+    shortestAsanaField.innerHTML = shortestAsana[0].name;
+}
 
 /* const invertidaAsana = [];
 for(let i = 0; i > asanas.lenght; i++) {
@@ -36,5 +52,8 @@ const invertedAsana = asanas.filter(function(asana) {
 });
 
 
-/* como mostrar la lista completa? */
-invertedAsanaField.innerHTML = invertedAsana[0].name;
+invertedAsanaNames = invertedAsana.map(function(asana) {
+    return asana.name
+})
+
+invertedAsanaField.innerHTML = invertedAsanaNames;
